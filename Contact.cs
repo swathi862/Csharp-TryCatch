@@ -14,8 +14,8 @@ namespace addressBook
 
         public string Address {get; set;}
 
-        public Contact(){
-            FullName = $"{FirstName} {LastName}";
+        public string GetFullName(){
+            return FullName = $"{FirstName} {LastName}";
         }
 
     }

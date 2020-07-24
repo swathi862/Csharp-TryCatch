@@ -58,21 +58,26 @@ namespace addressBook
         };
 
         // Insert an email that does NOT match a Contact
-        try{
+        // try{
             emails.Insert(1, "not.in.addressbook@email.com");
-        }
-        catch(KeyNotFoundException){
-            Console.WriteLine("Sorry! We couldn't find that email the Address Book.");
-        }
+        // }
+        // catch(Exception){
+        //     Console.WriteLine("Sorry! We couldn't find that email the Address Book.");
+        // }
 
         //  Search the AddressBook by email and print the information about each Contact
         foreach (string email in emails)
         {
+            try{
             Contact contact = newAddressBook.GetByEmail(email);
             Console.WriteLine("----------------------------");
-            Console.WriteLine($"Name: {contact.FullName}");
+            Console.WriteLine($"Name: {contact.GetFullName()}");
             Console.WriteLine($"Email: {contact.Email}");
             Console.WriteLine($"Address: {contact.Address}");
+            }
+            catch(Exception){
+                Console.WriteLine("Sorry! We couldn't find that email the Address Book.");
+            }
         }
     }
 }
